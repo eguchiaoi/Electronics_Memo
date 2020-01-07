@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                 EASIROC Manual    
+%                           Version : 0.1 (2019/12/4)  
+% 
+%  Created by :  
+%   Aoi EGUCHI, the University of Tokyo (eguchi@hep.phys.s.u-tokyo.ac.jp)
+%   Haruto KIKUTANI, the University of Tokyo (haruto@hep.phys.s.u-tokyo.ac.jp) 
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ======================  package installattion  ===================== %
+%\documentclass{jsarticle}
+\documentclass[a4paper]{article}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{here}
+\usepackage{multicol}
+\usepackage{okumacro}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\usepackage{color}
+\usepackage{ascmac}
+\usepackage{url}
+\usepackage{geometry}
+
+%page format 
+\geometry{
+	a4paper,
+	total={160mm,247mm},
+	left=25mm,
+	top=25mm
+}
+
+\graphicspath{ {../Images/} }
+
+%\pagestyle{empty}
+\pagestyle{fancy}
+
+
+
+\begin{document}
+
+\title{Electronics Memo}
+\maketitle
+
+\newpage
+
+\include{command}
+
+
+
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%表の挿入
+\begin{table}[H]
+\begin{center}
+\caption{表のタイトル}
+\begin{tabular}{ccc} \hline
+ &  &  \\ \hline
+ &  &  \\ 
+ &  &  \\ 
+ &  &  \\ 
+ &  &  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+%図の挿入
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width = 12.0cm, bb= 0 0 360 252]{ファイル名.eps}
+\end{center}
+\caption{グラフのタイトル}
+\label{fig:}
+\end{figure}
+
+
+%図を2つ並列
+\begin{figure}[H]
+\begin{minipage}{0.50\hsize}
+\begin{center}
+\includegraphics[width = 4.0cm,bb=0 0 600 600]{.ps}
+\end{center}
+\caption{タイトル}
+\label{fig:}
+\end{minipage}
+\begin{minipage}{0.50\hsize}
+\begin{center}
+\includegraphics[width = 4.0cm,bb=0 0 600 600]{.ps}
+\end{center}
+\caption{タイトル}
+\label{fig:}
+\end{minipage}
+\end{figure}
+
+
+
+%図を3つ並列
+\begin{figure}[H]
+\begin{minipage}{0.33\hsize}
+\begin{center}
+\includegraphics[width = 4.0cm,bb=0 0 600 600]{.ps}
+\end{center}
+\caption{タイトル}
+\label{fig:}
+\end{minipage}
+\begin{minipage}{0.33\hsize}
+\begin{center}
+\includegraphics[width = 4.0cm,bb=0 0 600 600]{.ps}
+\end{center}
+\caption{タイトル}
+\label{fig:}
+\end{minipage}
+\begin{minipage}{0.33\hsize}
+\begin{center}
+\includegraphics[width = 4.0cm,bb=0 0 600 600]{.ps}
+\end{center}
+\caption{タイトル}
+\label{fig:}
+\end{minipage}
+\end{figure}
+
+
+%文章と図の2段組
+\begin{multicols}{2}
+文章
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width = 7.0cm,bb=0 0 800 600]{.pdf}%図
+\end{center}
+\caption{タイトル}
+\label{fig:1.1.1}
+\end{figure}
+\end{multicols}
+
+\makeatletter
+
+%----- Equation num brackets -------------------
+
+\newcommand\eqnobrck[1]{[#1]}
+
+%---- Test if a file is loaded ------------------
+
+\newcommand\@iffileloaded[2]{%
+    \expandafter\ifx\csname ver@#1.#2\endcsname\relax
+       \expandafter\@secondoftwo
+    \else
+       \expandafter\@firstoftwo
+    \fi}
+
+%----- For right equation numbers --------------
+
+\renewcommand\@eqnnum{{%
+    \normalfont \normalcolor \eqnobrck{\theequation}}}
+
+%---- For left equation numbers ----------------
+
+\@iffileloaded{leqno}{clo}{%
+    \renewcommand\@eqnnum{\hb@xt@.01\p@{}%
+       \rlap{\normalfont\normalcolor
+       \hskip -\displaywidth\eqnobrck{\theequation}}}
+    }{}
+
+%---- If amsmath is loaded ----------------------
+
+\@ifpackageloaded{amsmath}{%
+     \renewcommand\tagform@[1]{%
+        \maketag@@@{\eqnobrck{\ignorespaces#1\unskip\@@italiccorr}}}
+        }{}
+
+
+ \renewcommand{\theequation}{%
+   \thesection.\arabic{equation}}
+  \@addtoreset{equation}{section}
+
+
+\makeatother
+
+
+

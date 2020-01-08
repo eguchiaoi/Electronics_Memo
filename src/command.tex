@@ -90,8 +90,8 @@ LV\_IF をon (~0.54V)
 ASUが1枚の場合と3枚の場合はそれぞれ、
 \begin{screen}
 \begin{verbatim}
-load\_config\_file.sh /opt/calicoes/config/wagasci\_config\_1asu.xml[load]
-load\_config\_file.sh /opt/calicoes/config/wagasci\_config\_3asu.xml[load3]
+$ load_config_file.sh /opt/calicoes/config/wagasci_config_1asu.xml[load]
+$ load_config_file.sh /opt/calicoes/config/wagasci_config_3asu.xml[load3]
 \end{verbatim}
 \end{screen}
 さらに、初期化、configureを行う。
@@ -171,14 +171,14 @@ $ stop_run.sh *********
 rawデータをデコードする必要がある。
 \begin{screen}
 \begin{verbatim}
-Decoder -f  /home/data/prototech/******/******.raw
+$ Decoder -f  /home/data/prototech/******/******.raw
 \end{verbatim}
 \end{screen}
 これにより、/home/data/decode/ 以下に root ファイルが生成される（旧：/home/data/rootfile/）。\\
 rootファイルができる場所を指定する (DIR\_NAME) には、デコードする際に
 \begin{screen}
 \begin{verbatim}
-Decoder -f  /home/data/prototech/******/******.raw -o /PATH/TO/DIR_NAME
+$ Decoder -f  /home/data/prototech/******/******.raw -o /PATH/TO/DIR_NAME
 \end{verbatim}
 \end{screen}
 とする。\\
@@ -225,7 +225,7 @@ WAGASCI\_DQHISTORYDIR  & wgDQHistoryで出力するデータクオリティの�
 そのディレクトリへの絶対パスをsetting\_wagasci.shに書き込み、
 \begin{screen}
 \begin{verbatim}
-$ source setting\_wagasci.sh
+$ source setting_wagasci.sh
 \end{verbatim}
 \end{screen}
 で設定を読み込む。
@@ -233,7 +233,7 @@ $ source setting\_wagasci.sh
 環境設定はターミナル終了時に消えてしまうので、ターミナル起動時に自動で読み込みを行うために ~/.bashrcに
 \begin{screen}
 \begin{verbatim}
-source /PATH/TO/setting\_wagasci.sh
+source /PATH/TO/setting_wagasci.sh
 \end{verbatim}
 \end{screen}
 と書き込む。
@@ -261,7 +261,7 @@ source /PATH/TO/setting\_wagasci.sh
 # make
 # ./bin/wgChangeConfig -f wagasci_config_dif1_chip1.txt
 
-/usr/local/src/wagasci_software/Analysis/bin/wgChangeConfig 
+# /usr/local/src/wagasci_software/Analysis/bin/wgChangeConfig 
 -f /opt/calicoes/config/wagasci_config_dif1_chip1.txt 
 \end{verbatim}
 \end{screen}
@@ -342,4 +342,16 @@ I don't know the relationship between a threshold voltage and the value of 10-bi
 Concerning the point 1, I join you a linearity measurement of the Threshold DAC :
 \[ V_{\mathrm{out}} = A \times \mathrm{DAC\_Code} + B \]
 You can see that the slope is $A = 2.22$ mV/DAC unit with an offset of about $B = 830$ mV.
+
+
+\newpage
+\section{その他のメモ}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width = 14.0cm, bb= 0 0 604 695]{single_mppc_board_id.png}
+\end{center}
+\caption{Single MPPC boardのPX-CH対応表}
+\label{fig:}
+\end{figure}
 
